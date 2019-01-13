@@ -1,13 +1,29 @@
-﻿using Demo.Tradeshift.Math.Triangles.Enums;
+﻿using System;
+using Demo.Tradeshift.Math.Triangles.Enums;
 
 namespace Demo.Tradeshift.Math.Triangles
 {
+    /// <summary>
+    /// Triangle classification helper
+    /// </summary>
     public static class TriangleClassificator
     {
-        public const double Tolerance = 1E-9;
+        private const double Tolerance = 1E-9;
 
+        /// <summary>
+        /// Classify triangle by its sides lengths(a, b, c).
+        /// </summary>
+        /// <param name="a">length of a side, should be > 0 </param>
+        /// <param name="b">length of b side, should be > 0</param>
+        /// <param name="c">length of c side, should be > 0</param>
+        /// <returns>rectangle classification <see cref="TriangleClassification"/></returns>
         public static TriangleClassification ClassifyBySides(double a, double b, double c)
         {
+            if (a <= 0 || b <= 0 || c <= 0)
+            {
+                throw new ArgumentException("sides length (a, b, c) should be greater than 0");
+            }
+
             //A triangle is valid if sum of its two sides is greater than the third side
             bool triangleIsValid = (a + b > c) && (a + c > b) && (b + c > a);
             if (triangleIsValid == false)

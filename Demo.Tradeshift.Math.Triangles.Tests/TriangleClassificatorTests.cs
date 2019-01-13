@@ -1,3 +1,4 @@
+using System;
 using Demo.Tradeshift.Math.Triangles.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -21,6 +22,22 @@ namespace Demo.Tradeshift.Math.Triangles.Tests
         {
             TriangleClassification classification = TriangleClassificator.ClassifyBySides(a, b, c);
             Assert.AreEqual(classification, expectedClassification);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+
+        [DataRow(0, 0, 0)]
+        [DataRow(0, 1, 1)]
+        [DataRow(1, 0, 1)]
+        [DataRow(1, 1, 0)]
+        [DataRow(-1, -1, -1)]
+        [DataRow(-1, 1, 1)]
+        [DataRow(1, -1, 1)]
+        [DataRow(1, 1, -1)]
+        public void should_throw_exception_if_some_length_is_incorrect(double a, double b, double c)
+        {
+            TriangleClassificator.ClassifyBySides(a, b, c);
         }
     }
 }
