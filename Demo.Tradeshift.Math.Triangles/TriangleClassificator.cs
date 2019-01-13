@@ -5,6 +5,8 @@ namespace Demo.Tradeshift.Math.Triangles
 {
     public static class TriangleClassificator
     {
+        public const double Tolerance = 1E-9;
+
         public static TriangleClassification ClassifyBySides(double a, double b, double c)
         {
             //A triangle is valid if sum of its two sides is greater than the third side
@@ -12,6 +14,13 @@ namespace Demo.Tradeshift.Math.Triangles
             if (triangleIsValid == false)
             {
                 return TriangleClassification.Invalid;
+            }
+
+            //Equilateral (all three sides are equal)
+            bool triangleIsEquilateral = (System.Math.Abs(a - b) < Tolerance) && (System.Math.Abs(b - c) < Tolerance);
+            if (triangleIsEquilateral)
+            {
+                return TriangleClassification.Equilateral;
             }
 
             throw new NotImplementedException();
