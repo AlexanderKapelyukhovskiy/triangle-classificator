@@ -1,5 +1,4 @@
-﻿using System;
-using Demo.Tradeshift.Math.Triangles.Enums;
+﻿using Demo.Tradeshift.Math.Triangles.Enums;
 
 namespace Demo.Tradeshift.Math.Triangles
 {
@@ -23,7 +22,19 @@ namespace Demo.Tradeshift.Math.Triangles
                 return TriangleClassification.Equilateral;
             }
 
-            throw new NotImplementedException();
+            //Isosceles(two sides are equal)
+            bool triangleIsIsosceles =
+                (System.Math.Abs(a - b) < Tolerance)
+                || (System.Math.Abs(a - c) < Tolerance)
+                || (System.Math.Abs(b - c) < Tolerance);
+
+            if (triangleIsIsosceles)
+            {
+                return TriangleClassification.Isosceles;
+            }
+
+            //Scalene(all sides are different)
+            return TriangleClassification.Scalene;
         }
     }
 }
