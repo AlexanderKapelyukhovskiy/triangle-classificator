@@ -2,7 +2,8 @@
 Thid repository houses the sources for Demo Triangle Classificator App. This App has been written for following requirements:
 
 ```
-Write a program that will determine the type of a triangle. It should take the lengths of the triangle's three sides as input, and return whether the triangle is equilateral, isosceles or scalene.
+Write a program that will determine the type of a triangle. It should take the lengths of the triangle's three
+sides as input, and return whether the triangle is equilateral, isosceles or scalene.
 ```
 
 ## Getting the demo sources
